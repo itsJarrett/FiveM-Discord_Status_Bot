@@ -8,6 +8,10 @@ offline1 = false
 messsage1 = false
 offline2 = false
 messsage2 = false
+offline3 = false
+messsage3 = false
+offline4 = false
+messsage4 = false
 
 async def server_status_check():
     await client.wait_until_ready()
