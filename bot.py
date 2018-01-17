@@ -1,6 +1,7 @@
 import discord
 import asyncio
 import urllib3
+urllib3.disable_warnings()
 
 
 client = discord.Client()
@@ -28,7 +29,6 @@ async def server_status_check():
     global offline4
     global message4
     while not client.is_closed:
-        print("TEST")
         req1 = http.request('GET','https://servers-live.fivem.net/api/servers/single/66.70.180.161:30120')
         code1 = req1.status
         if code1 != 200:
@@ -80,7 +80,7 @@ async def server_status_check():
                 client.send_message("STRP Whitelist #2 is now back Online. :white_check_mark:")
                 message4 = False
             offline4 = False
-    await asyncio.sleep(15)
+    await asyncio.sleep(5)
 
 @client.event
 async def on_ready():
