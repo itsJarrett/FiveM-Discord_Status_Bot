@@ -4,78 +4,77 @@ import urllib3
 
 
 client = discord.Client()
+user_agent = {'user-agent': 'Mozilla/5.0 (Windows NT 6.3; rv:36.0) Gecko/20100101 Firefox/36.0'}
+http = urllib3.PoolManager(10, headers=user_agent)
 
 offline1 = False
-messsage1 = False
+message1 = False
 offline2 = False
-messsage2 = False
+message2 = False
 offline3 = False
-messsage3 = False
+message3 = False
 offline4 = False
-messsage4 = False
+message4 = False
 
 async def server_status_check():
     await client.wait_until_ready()
     channel = discord.Object(id='ANNOUNCEMENT_CHANNEL_ID_HERE')
+    global offline1
+    global message1
+    global offline2
+    global message2
+    global offline3
+    global message3
+    global offline4
+    global message4
     while not client.is_closed:
-        req1 = urllib3.Request('https://servers-live.fivem.net/api/servers/single/66.70.180.161:30120')
-        req1.add_header('User-agent', 'Mozilla 5.10')
-        response1 = urllib3.urlopen(req1)
-        json1 = response1.read()
-        code1 = response1.getcode()
+        print("TEST")
+        req1 = http.request('GET','https://servers-live.fivem.net/api/servers/single/66.70.180.161:30120')
+        code1 = req1.status
         if code1 != 200:
             if offline1:
-                client.send_message("STRP 1 #1 is Offline. Standby for outage information. :x:")
-                message1 = true
-            offline1 = true
+                client.send_message("STRP #1 is Offline. Standby for outage information. :x:")
+                message1 = True
+            offline1 = True
         else:
             if message1:
                 client.send_message("STRP #1 is now back Online. :white_check_mark:")
                 message1 = False
             offline1 = False
 
-        req2 = urllib3.Request('https://servers-live.fivem.net/api/servers/single/66.70.180.161:30121')
-        req2.add_header('User-agent', 'Mozilla 5.10')
-        response2 = urllib3.urlopen(req2)
-        json2 = response2.read()
-        code2 = response2.getcode()
+        req2 = http.request('GET','https://servers-live.fivem.net/api/servers/single/66.70.180.161:30121')
+        code2 = req2.status
         if code2 != 200:
             if offline2:
                 client.send_message("STRP #2 is Offline. Standby for outage information. :x:")
-                message2 = true
-            offline2 = true
+                message2 = True
+            offline2 = True
         else:
             if message2:
                 client.send_message("STRP #2 is now back Online. :white_check_mark:")
                 message2 = False
             offline2 = False
 
-        req3 = urllib3.Request('https://servers-live.fivem.net/api/servers/single/66.70.180.161:30123')
-        req3.add_header('User-agent', 'Mozilla 5.10')
-        response3 = urllib3.urlopen(req3)
-        json3 = response3.read()
-        code3 = response3.getcode()
+        req3 = http.request('GET','https://servers-live.fivem.net/api/servers/single/66.70.180.161:30123')
+        code3 = req3.status
         if code3 != 200:
             if offline3:
                 client.send_message("STRP Whitelist #1 is Offline. Standby for outage information. :x:")
-                message3 = true
-            offline3 = true
+                message3 = True
+            offline3 = True
         else:
             if message3:
                 client.send_message("STRP Whitelist #1 is now back Online. :white_check_mark:")
                 message3 = False
             offline3 = False
 
-        req4 = urllib3.Request('https://servers-live.fivem.net/api/servers/single/66.70.180.161:30122')
-        req4.add_header('User-agent', 'Mozilla 5.10')
-        response4 = urllib3.urlopen(req4)
-        json4 = response4.read()
-        code4 = response4.getcode()
+        req4 = http.request('GET','https://servers-live.fivem.net/api/servers/single/66.70.180.161:30122')
+        code4 = req4.status
         if code4 != 200:
             if offline4:
                 client.send_message("STRP Whitelist #2 is Offline. Standby for outage information. :x:")
-                message4 = true
-            offline4 = true
+                message4 = True
+            offline4 = True
         else:
             if message4:
                 client.send_message("STRP Whitelist #2 is now back Online. :white_check_mark:")
