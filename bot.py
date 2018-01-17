@@ -27,7 +27,7 @@ async def server_status_check():
     global message3
     global message4
     while not client.is_closed:
-        req1 = http.request('GET','https://servers-live.fivem.net/api/servers/single/66.70.180.162:30121')
+        req1 = http.request('GET','https://servers-live.fivem.net/api/servers/single/66.70.180.161:30121')
         code1 = req1.status
         if code1 != 200 and message1 == False:
             if offline1 == False:
