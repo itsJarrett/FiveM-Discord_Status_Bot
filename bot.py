@@ -10,6 +10,7 @@ urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 client = discord.Client()
 http = urllib3.PoolManager(10,
 headers={'user-agent': 'Mozilla/5.0 (Windows NT 6.3; rv:36.0) Gecko/20100101 Firefox/36.0'})
+
 # The following is an example. Add as many sevrvers as you would like to the array.
 servers = [["STRP #1", "66.70.180.161:30120", False],
            ["STRP #2", "66.70.180.161:30121", False],
@@ -69,4 +70,4 @@ async def on_ready():
 
 client.loop.create_task(server_count_status())
 client.loop.create_task(server_status_check())
-client.run('TOKEN')
+client.run('TOKEN HERE') # Place the API Bot User Token here! Get this from https://discordapp.com/developers/applications
