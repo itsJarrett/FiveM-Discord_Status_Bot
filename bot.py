@@ -34,7 +34,7 @@ def server_json(ip):
 
 async def server_status_check():
     await client.wait_until_ready()
-    channel = discord.Object(id='ANNOUNCEMENT_CHANNEL_ID_HERE')
+    channel = discord.Object(id='ANNOUNCEMENT_CHANNEL_ID_HERE') # This can be grabbed by right cliking on the channel and using "Copy ID"
     while not client.is_closed:
         for server_id, server in enumerate(servers):
             if not server_online(server[1]) and server[2] is False:
@@ -47,7 +47,7 @@ async def server_status_check():
                 await client.send_message(channel, ":white_check_mark: " + server[0] + "is now Online! "
                                                                                        ":white_check_mark:")
                 servers[server_id][2] = False
-    await asyncio.sleep(10)
+    await asyncio.sleep(10) # This can be changed. Default: 10 Seconds
 
 
 async def server_count_status():
@@ -56,7 +56,7 @@ async def server_count_status():
         player_count = 0
         for server_id, server in enumerate(servers):
             player_count += server_json(server[1])["Data"]["clients"]
-        await client.change_presence(game=Game(name=str(player_count) + " players on STRP"))
+        await client.change_presence(game=Game(name=str(player_count) + " players online."))
     await asyncio.sleep(5)
 
 

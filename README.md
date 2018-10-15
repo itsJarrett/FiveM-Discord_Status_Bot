@@ -1,6 +1,10 @@
 # FiveM Discord Bot
 
-A Discord Bot that loops through all your servers and displays all of their status via command. It will also add all of the player counts and display it in the Rich Presence!
+This discord bot will continually check the statuses of your FiveM Servers. Default: 10 Seconds
+
+When a server goes down, the bot will notify all users in the configured channel.
+
+Setting up is very simple just follow the steps below and check out the boy.py !
 
 ## Getting Started
 
